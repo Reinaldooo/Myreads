@@ -36,12 +36,10 @@ updateBook = (book, shelf) => {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid">
                 <Search 
                 data={currentlyReading}
                 updateBook={this.updateBook}
                 title="Search"/>
-              </ol>
             </div>
           </div>
         ) : (
