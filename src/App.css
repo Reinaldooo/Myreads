@@ -27,6 +27,10 @@ body, .app {
   font-size: 4em;
   font-family: 'Lato', sans-serif;
 }
+.list-books-title span {
+background-color: rgba(0, 0, 0,0.2);
+border-radius: 10px;
+}
 
 .list-books-content {
   padding: 0 0 80px;

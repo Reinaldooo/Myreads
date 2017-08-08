@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-class Show extends Component {
+class Want extends Component {
 
   render() {  
     
@@ -41,4 +41,4 @@ class Show extends Component {
   }
 }
 
-export default Show
+export default Want

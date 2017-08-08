@@ -2,22 +2,27 @@ import React, {Component} from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-class Show extends Component {
+class Search extends Component {
 
   render() {  
-    
     return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{this.props.title}</h2> 
+      {(this.props.query !== '') && 
+      <h4 className="bookshelf-title">Results for "{this.props.query}":</h4>  
+      }
       <div className="bookshelf-books">
         <ol className="books-grid">
-          {this.props.data.map((book) => (
+          {(this.props.data !== undefined) && this.props.data.map((book) => (
           <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>
+                    {book.shelf === "wantToRead" || (book.shelf === "currentlyReading" || book.shelf === "read") ? 
+                    <div className="book-cover-faded" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>
+                    : 
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>  
+                    }
                     <div className="book-shelf-changer">
-                      <select defaultValue={book.shelf} onChange={(event) => this.props.updateBook(book, event.target.value) }>
+                      <select defaultValue="none" onChange={(event) => this.props.updateBook(book, event.target.value) }>
                         <option value="none" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
@@ -27,7 +32,7 @@ class Show extends Component {
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  {book.authors.map((author, index) => (
+                  {(book.authors !== undefined) && book.authors.map((author, index) => (
                     <div key={index}className="book-authors">{author}</div>
                   ))}
                 </div>
@@ -41,4 +46,4 @@ class Show extends Component {
   }
 }
 
-export default Show
+export default Search
