@@ -6,7 +6,7 @@ body {
   
 }
 body, .app {
-  background: #f5f5f5;
+  background: #424242;
 }
 
 /* main page */
@@ -48,11 +48,12 @@ border-radius: 10px;
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  border-bottom: 1px solid #616161;
   margin: 0 auto 0.7em;
   width: 45%;
   font-family: 'Lato', sans-serif;
-  text-align: center
+  text-align: center;
+  color: #E0E0E0
 }
 .bookshelf-books {
   text-align: center;
@@ -146,6 +147,7 @@ border-radius: 10px;
 }
 .book-title {
   margin-top: 10px;
+  color: #E0E0E0
 }
 .book-authors {
   color: #999;
@@ -185,6 +187,7 @@ border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
   border-radius: 3Px;
+  background-size: cover
 }
 .book-cover-faded {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

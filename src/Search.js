@@ -6,30 +6,34 @@ import './App.css'
 import _ from 'lodash'
 
 class Search extends Component {
-    state = {
-      books: [],
-      query: '',
-      owned: this.props.data
-    }
+  state = {
+    books: [],
+    query: '',
+    owned: this.props.data
+  }
 
-updateQuery = (query) => {
-  this.setState({ query: query.trim() })
-  const deb = _.debounce((query) => { this.updateQueryShow(query) }, 500)  
-  deb(query) 
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => { 
+      this.setState({ owned: books })
+    })
+  }  
+
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() })
+    const deb = _.debounce((query) => { this.updateQueryShow(query) }, 500)  
+    deb(query) 
   } 
-updateQueryShow = (query) => {
-  BooksAPI.search(query, 20).then((books) => { 
-      console.log(query)
-      this.setState({ books })
-    }) 
-}   
+  updateQueryShow = (query) => {
+    BooksAPI.search(query, 2).then((books) => { 
+        this.setState({ books })
+      }) 
+  }   
 
   render() {  
-    console.log(this.state.owned)
-    return (
-      <div className="search-books">
-            <div className="search-books-bar">
-              <Link className="close-search" to="/">Close</Link>
+      return (
+        <div className="search-books">
+          <div className="search-books-bar">
+            <Link className="close-search" to="/">Close</Link>
               <div className="search-books-input-wrapper">
                 <input type="text"
                 placeholder="Search by title or author"
@@ -37,17 +41,18 @@ updateQueryShow = (query) => {
                 onChange={(event) => this.updateQuery(event.target.value)}
                 />
               </div>
-            </div>
-            <div className="search-books-results">
-                <SearchShow 
-                data={this.state.books}
-                title="Search"
-                updateBook={this.props.updateBook}
-                query={this.state.query}
-                />
-            </div>
           </div>
-    )
+          <div className="search-books-results">
+              <SearchShow 
+              data={this.state.books}
+              title="Search"
+              updateBook={this.props.updateBook}
+              query={this.state.query}
+              owned={this.state.owned}
+              />
+          </div>
+        </div>
+      )
   }
 }
 

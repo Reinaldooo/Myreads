@@ -1,21 +1,21 @@
 import React, {Component} from 'react'
-// import * as BooksAPI from './BooksAPI'
-// import Book from './Book'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-class Search extends Component {
+class Show extends Component {
+  state = {
+    book: {},
+    owned: this.props.owned
+  }
 
-  render() {  
-    return (
-      <div className="bookshelf">
-        {
-        (this.props.query !== '') && 
-        <h4 className="bookshelf-title">Results for "{this.props.query}":</h4>  
-        }
-          <div className="bookshelf-books">
-            <ol className="books-grid">
-              {(this.props.data !== undefined) && this.props.data.map((book) => (
-                <li key={book.id}>
+componentWillMount() {
+    BooksAPI.get(this.props.book.id).then((book) => {
+    this.setState({ book })
+    })  
+}
+
+  render() {
+    return (       
                 <div className="book">
                   <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>
@@ -34,14 +34,9 @@ class Search extends Component {
                     <div key={index}className="book-authors">{author}</div>
                   ))}
                 </div>
-                </li>
-              ))
-              }
-            </ol>
-          </div>
-      </div>  
+                
     )
   }
 }
 
-export default Search
+export default Show
