@@ -45,7 +45,6 @@ class Search extends Component {
           <div className="search-books-results">
               <SearchShow 
               data={this.state.books}
-              title="Search"
               updateBook={this.props.updateBook}
               query={this.state.query}
               owned={this.state.owned}

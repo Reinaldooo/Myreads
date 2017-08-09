@@ -8,8 +8,7 @@ import './App.css'
 
 class BooksApp extends Component {
   state = {
-    books: [],
-    showSearchPage: true
+    books: []
 }
 
 componentDidMount() {
@@ -23,6 +22,7 @@ updateBook = (book, shelf) => {
       books: state.books.filter((c) => c.id !== book.id).concat([book])
   }))
   BooksAPI.update(book, shelf)
+
 }
  
     render() {

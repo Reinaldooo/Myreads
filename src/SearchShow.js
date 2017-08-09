@@ -10,7 +10,7 @@ class Search extends Component {
       <div className="bookshelf">
         {
         (this.props.query !== '') && 
-        <h4 className="bookshelf-title">Results for "{this.props.query}":</h4>  
+        <h4 className="bookshelf-title">If you already own a book, it will show up faded</h4>
         }
           <div className="bookshelf-books">
             <ol className="books-grid">
@@ -18,9 +18,9 @@ class Search extends Component {
                 <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>
+                    <div className={(this.props.owned.filter((b) => b.id === book.id)[0] && "book-cover-faded") || "book-cover"} style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>      
                     <div className="book-shelf-changer">
-                      <select defaultValue={book.shelf} onChange={(event) => this.props.updateBook(book, event.target.value) }>
+                      <select defaultValue={(this.props.owned.filter((b) => b.id === book.id)[0] && this.props.owned.filter((b) => b.id === book.id)[0].shelf) || "none"} onChange={(event) => this.props.updateBook(book, event.target.value) }>
                         <option value="none" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
@@ -30,7 +30,7 @@ class Search extends Component {
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  {book.authors.map((author, index) => (
+                  {book.authors && book.authors.map((author, index) => (
                     <div key={index}className="book-authors">{author}</div>
                   ))}
                 </div>
