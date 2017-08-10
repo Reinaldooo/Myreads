@@ -28,15 +28,12 @@ class Search extends Component {
         this.setState({ books: books, load: false })
     }) 
   }
-  updateSearchedBook = (book, shelf) => {
-    book.shelf = shelf
-      this.setState((state) => ({
-          books: state.books.filter((c) => c.id !== book.id).concat([book]),
-          owned: state.owned.concat([book]),
-          display: "Book added!"
-      }))
-    BooksAPI.update(book, shelf)
-  }   
+  teste = (book, shelf) => {
+    this.props.updateBook(book, shelf)
+    this.setState({  
+      owned: this.state.owned.filter((b) => b.id !== book.id).concat([book])
+    })
+  }
   render() {  
     return (
       <div className="search-books">
@@ -53,7 +50,7 @@ class Search extends Component {
         <div className="search-books-results">
             <SearchShow 
             data={this.state.books}
-            updateSearchedBook={this.updateSearchedBook}
+            updateBook={this.teste}
             query={this.state.query}
             owned={this.state.owned}
             load={this.state.load}
