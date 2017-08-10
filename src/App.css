@@ -6,7 +6,7 @@ body {
   
 }
 body, .app {
-  background: #424242;
+  background: #616161;
 }
 
 /* main page */
@@ -48,9 +48,8 @@ border-radius: 10px;
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #616161;
+  border-bottom: 1px solid #757575;
   margin: 0 auto 0.7em;
-  width: 45%;
   font-family: 'Raleway', sans-serif;
   text-align: center;
   color: #E0E0E0;
@@ -142,7 +141,8 @@ border-radius: 10px;
   text-align: center
 }
 .book-title,
-.book-authors {
+.book-authors,
+.book-owned {
   font-size: 0.8em;
   font-family: 'Raleway', sans-serif;
 }
@@ -150,8 +150,12 @@ border-radius: 10px;
   margin-top: 10px;
   color: #E0E0E0
 }
+.book-owned {
+  margin-top: 2px;
+  color: #43A047
+}
 .book-authors {
-  color: #999;
+  color: #9e9e9e;
 }
 
 .book-top {
@@ -168,14 +172,34 @@ border-radius: 10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #42a5f5;
+  background: #9E9E9E;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 20px;
+  background-size: 35px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .book-shelf-changer select {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.book-shelf-changer-owned {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #43A047;
+  background-image: url('./icons/Check.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.book-shelf-changer-owned select {
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -185,7 +209,7 @@ border-radius: 10px;
 /* book cover */
 
 .book-cover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.20), 5px 10px 6px rgba(0,0,0,0.15);
   background: #eee;
   border-radius: 3Px;
   background-size: cover
@@ -221,7 +245,20 @@ border-radius: 10px;
   margin-top: 10px;
   color: #43A047;
   text-decoration: none;
-  font-size: 1.5em;
+  background-color: #E8F5E9;
+  padding: 0.4em;
+  border-radius: 10px;
+  font-size: 0.8em;
+      -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0;  }
+    to   { opacity: 1;}
 }
 
 .spinner {

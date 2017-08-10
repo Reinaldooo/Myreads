@@ -30,8 +30,13 @@ class Search extends Component {
   }
   updateSearch = (book, shelf) => {
     this.props.updateBook(book, shelf)
-    book.shelf = shelf
-    this.setState({ owned: this.state.owned.concat([book])})
+    if(shelf === "none"){
+      this.setState({ owned: this.state.owned.filter((b) => b.id !== book.id), display: true}) 
+    
+    } else {
+     book.shelf = shelf
+    this.setState({ owned: this.state.owned.concat([book]), display: true})
+    }
     }
   render() {  
     return (

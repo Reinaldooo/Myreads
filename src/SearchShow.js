@@ -8,10 +8,10 @@ class Search extends Component {
     this.props.data.sort(sortBy('title', 'id'))
     return (
       <div className="bookshelf">
-        {
+        {/* {
         (this.props.query) && 
         <h4 className="bookshelf-title">Faded out books are already in one of your shelfs</h4>
-        }
+        } */}
           <div className="bookshelf-books">
             {(this.props.load && this.props.query) && //This will show the loading animation
             <div className="spinner">
@@ -20,14 +20,14 @@ class Search extends Component {
               <div className="bounce3"></div>
             </div>
             }
-            {this.props.display !== undefined && <div className="flash-message"><Link to="/">Book added, click here to go back.</Link></div>}
+            {this.props.display !== undefined && <div className="flash-message"><Link to="/">Changes saved, click here to go back.</Link></div>}
             <ol className="books-grid">
               {(this.props.data !== undefined) && this.props.data.map((book) => (
                 <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className={(this.props.owned.find((b) => b.id === book.id) !== undefined && "book-cover-faded") || "book-cover"} style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>      
-                    <div className="book-shelf-changer">
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>      
+                    <div className={(this.props.owned.find((b) => b.id === book.id) !== undefined && "book-shelf-changer-owned") || "book-shelf-changer"}>
                       <select defaultValue={(this.props.owned.find((b) => b.id === book.id) !== undefined && this.props.owned.find((b) => b.id === book.id).shelf) || "none"} onChange={(event) => this.props.updateSearch(book, event.target.value) }>
                         <option value="none" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
@@ -37,6 +37,7 @@ class Search extends Component {
                       </select>
                     </div>
                   </div>
+                  
                   <div className="book-title">{book.title}</div>
                   {book.authors && book.authors.map((author, index) => (
                     <div key={index}className="book-authors">{author}</div>

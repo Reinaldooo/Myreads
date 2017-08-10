@@ -8,6 +8,7 @@ class Show extends Component {
   render() {
     this.props.data.sort(sortBy('title', 'id'))  
     return (
+      
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2> 
         <div className="bookshelf-books">
@@ -23,7 +24,7 @@ class Show extends Component {
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
                           <option value="read">Read</option>
-                          <option value="none">None</option>
+                          <option value="none">Remove</option>
                         </select>
                       </div>
                     </div>
@@ -40,7 +41,7 @@ class Show extends Component {
               <div className="bounce2"></div>
               <div className="bounce3"></div>
             </div>
-            } 
+            }
           </ol>
         </div>
       </div>  
