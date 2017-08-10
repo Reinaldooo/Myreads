@@ -30,10 +30,9 @@ class Search extends Component {
   }
   teste = (book, shelf) => {
     this.props.updateBook(book, shelf)
-    this.setState({  
-      owned: this.state.owned.filter((b) => b.id !== book.id).concat([book])
-    })
-  }
+    book.shelf = shelf
+    this.setState({ owned: this.state.owned.concat([book])})
+    }
   render() {  
     return (
       <div className="search-books">
