@@ -1,43 +1,41 @@
 import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import Show from './Show.js'
 import Search from './Search.js'
-import { Link } from 'react-router-dom'
 import './App.css'
 
 class BooksApp extends Component {
   state = {
     books: []
-}
-
-componentDidMount() {
+  }
+  componentDidMount() {
     BooksAPI.getAll().then((books) => { 
       this.setState({ books })
     })
-}
-updateBook = (book, shelf) => {
-  book.shelf = shelf
-  this.setState((state) => ({
-      books: state.books.filter((c) => c.id !== book.id).concat([book])
-  }))
-  BooksAPI.update(book, shelf)
-
-}
- 
-    render() {
-
-      return (
+  }
+  updateBook = (book, shelf) => {
+    book.shelf = shelf
+      this.setState((state) => ({
+          books: state.books.filter((c) => c.id !== book.id).concat([book]),
+          display: "Book added to your library"
+      }))
+    BooksAPI.update(book, shelf)
+  }
+  
+  render() {
+    return (
       <div className="app">          
-          <Route exact path="/search" render={({ history }) =>( 
+        <Route exact path="/search" render={({ history }) =>( 
           <Search 
           data={this.state.books}
           updateBook={this.updateBook}
           searchToggle={this.searchToggle}
-          owned={this.state.books}/>                                 
-          )}/>
-          <Route exact path="/" render={() =>( 
-                    <div className="list-books">
+          owned={this.state.books}
+          />                                 
+        )}/>
+        <Route exact path="/" render={() =>( 
+          <div className="list-books">
             <div className="list-books-title">
               <h1><span>MyReads</span></h1>
             </div>
@@ -48,12 +46,10 @@ updateBook = (book, shelf) => {
                 updateBook={this.updateBook}
                 title="Currently Reading"
                 />
- 
                 <Show 
                 data={this.state.books.filter((b) => b.shelf === "wantToRead")}
                 updateBook={this.updateBook}
                 title="Want to Read"/>
-
                 <Show 
                 data={this.state.books.filter((b) => b.shelf === "read")}
                 updateBook={this.updateBook}
@@ -64,10 +60,9 @@ updateBook = (book, shelf) => {
               <Link to="/search"></Link>
             </div>
           </div>  
-          )}/>
-          </div>
+        )}/>
+      </div>
     )
   }
 }
-
 export default BooksApp
