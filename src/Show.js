@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
+import sortBy from 'sort-by'
 
 class Show extends Component {
 
-  render() {  
+  render() {
+    this.props.data.sort(sortBy('title', 'id'))  
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2> 
@@ -27,7 +29,7 @@ class Show extends Component {
                     </div>
                     <div className="book-title">{book.title}</div>
                     {book.authors.map((author, index) => (
-                      <div key={index}className="book-authors">{author}</div>
+                      <div key={index} className="book-authors">{author}</div>
                     ))}
                   </div>
               </li>

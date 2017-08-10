@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
 import './App.css'
+import { Link } from 'react-router-dom'
+import sortBy from 'sort-by'
 
 class Search extends Component {
   render() {  
+    this.props.data.sort(sortBy('title', 'id'))
     return (
       <div className="bookshelf">
         {
@@ -17,14 +20,15 @@ class Search extends Component {
               <div className="bounce3"></div>
             </div>
             }
+            {this.props.display !== undefined && <div className="flash-message"><Link to="/">Book added, click here to go back.</Link></div>}
             <ol className="books-grid">
               {(this.props.data !== undefined) && this.props.data.map((book) => (
                 <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className={(this.props.owned.filter((b) => b.id === book.id)[0] && "book-cover-faded") || "book-cover"} style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>      
+                    <div className={((this.props.owned.filter((b) => b.id === book.id)[0] && this.props.owned.filter((b) => b.id === book.id)[0].shelf !== "none")  && "book-cover-faded") || "book-cover"} style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>      
                     <div className="book-shelf-changer">
-                      <select defaultValue={(this.props.owned.filter((b) => b.id === book.id)[0] && this.props.owned.filter((b) => b.id === book.id)[0].shelf) || "none"} onChange={(event) => this.props.updateBook(book, event.target.value) }>
+                      <select defaultValue={(this.props.owned.find((b) => b.id === book.id) !== undefined && this.props.owned.find((b) => b.id === book.id).shelf) || "none"} onChange={(event) => this.props.updateSearchedBook(book, event.target.value) }>
                         <option value="none" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>

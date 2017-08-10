@@ -10,7 +10,8 @@ class Search extends Component {
     books: [],
     query: '',
     owned: this.props.data,
-    load: true
+    load: true,
+    display: undefined
   }
   componentDidMount() {
     BooksAPI.getAll().then((books) => { 
@@ -19,13 +20,22 @@ class Search extends Component {
   }  
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
-    const debounce = _.debounce((query) => { this.updateQueryShow(query) }, 300)  
+    const debounce = _.debounce((query) => { this.updateQueryShow(query) }, 600)  
     debounce(query) 
   } 
   updateQueryShow = (query) => {
     BooksAPI.search(query, 2).then((books) => { 
         this.setState({ books: books, load: false })
     }) 
+  }
+  updateSearchedBook = (book, shelf) => {
+    book.shelf = shelf
+      this.setState((state) => ({
+          books: state.books.filter((c) => c.id !== book.id).concat([book]),
+          owned: state.owned.concat([book]),
+          display: "Book added!"
+      }))
+    BooksAPI.update(book, shelf)
   }   
   render() {  
     return (
@@ -43,10 +53,11 @@ class Search extends Component {
         <div className="search-books-results">
             <SearchShow 
             data={this.state.books}
-            updateBook={this.props.updateBook}
+            updateSearchedBook={this.updateSearchedBook}
             query={this.state.query}
             owned={this.state.owned}
             load={this.state.load}
+            display={this.state.display}
             />
         </div>
       </div>

@@ -20,12 +20,12 @@ body, .app {
   margin: 1% 0
 }
 .list-books-title h1 {
-  font-weight: 400;
+  font-weight: 700;
   text-shadow: 10px 5px 25px rgba(0,0,0,1);
   margin: 0;
   color: #f5f5f5;
   font-size: 4em;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 .list-books-title span {
 background-color: rgba(0, 0, 0,0.2);
@@ -51,9 +51,10 @@ border-radius: 10px;
   border-bottom: 1px solid #616161;
   margin: 0 auto 0.7em;
   width: 45%;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-align: center;
-  color: #E0E0E0
+  color: #E0E0E0;
+  font-weight: 400
 }
 .bookshelf-books {
   text-align: center;
@@ -98,7 +99,7 @@ border-radius: 10px;
   padding: 15px 10px;
   font-size: 1.25em;
   border: none;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
   outline: none;
 }
 
@@ -143,7 +144,7 @@ border-radius: 10px;
 .book-title,
 .book-authors {
   font-size: 0.8em;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 .book-title {
   margin-top: 10px;
@@ -189,16 +190,38 @@ border-radius: 10px;
   border-radius: 3Px;
   background-size: cover
 }
+.book-cover:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: #eee;
+  border-radius: 3Px;
+  background-size: cover;
+  opacity: 0.75
+}
 .book-cover-faded {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
   border-radius: 3Px;
-  opacity: 0.05
+  background-size: cover;
+  opacity: 0.1
+}
+.book-cover-faded:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: #eee;
+  border-radius: 3Px;
+  background-size: cover;
+  opacity: 0.1
 }
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+.flash-message a {
+  margin-top: 10px;
+  color: #43A047;
+  text-decoration: none;
+  font-size: 1.5em;
 }
 
 .spinner {
