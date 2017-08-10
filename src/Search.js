@@ -28,7 +28,7 @@ class Search extends Component {
         this.setState({ books: books, load: false })
     }) 
   }
-  teste = (book, shelf) => {
+  updateSearch = (book, shelf) => {
     this.props.updateBook(book, shelf)
     book.shelf = shelf
     this.setState({ owned: this.state.owned.concat([book])})
@@ -49,7 +49,7 @@ class Search extends Component {
         <div className="search-books-results">
             <SearchShow 
             data={this.state.books}
-            updateBook={this.teste}
+            updateSearch={this.updateSearch}
             query={this.state.query}
             owned={this.state.owned}
             load={this.state.load}
