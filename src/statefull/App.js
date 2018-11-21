@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../BooksAPI'
 import { Route, Link } from 'react-router-dom'
 import sortBy from 'sort-by'
-import Show from './Show.js'
+import Show from '../stateless/Show.js'
 import Search from './Search.js'
 import './App.css'
 
@@ -10,11 +10,13 @@ class BooksApp extends Component {
   state = {
     books: []
   }
+  
   componentDidMount() {
     BooksAPI.getAll().then((books) => { 
       this.setState({ books })
     })
   }
+
   updateBook = (book, shelf) => {
     book.shelf = shelf
       this.setState((state) => ({

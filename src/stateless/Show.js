@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import * as BooksAPI from './BooksAPI'
-import './App.css'
 import Book from './Book'
 
-class Show extends Component {
-  data = this.props.data
-
-  render() {    
+const Show = (props) => {
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.title}</h2>
+        <h2 className="bookshelf-title">{props.title}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {
               (
-                this.props.data[0] && this.props.data.map((book) => (
-                  <Book key={book.id} book={book} onShelves="true" updateBook={this.props.updateBook} />
+                props.data[0] && props.data.map((book) => (
+                  <Book key={book.id} book={book} onShelves="true" updateBook={props.updateBook} />
                 ))
               )
               ||
@@ -29,6 +25,5 @@ class Show extends Component {
         </div>
       </div>
     )
-  }
 }
 export default Show

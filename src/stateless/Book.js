@@ -1,5 +1,5 @@
 import React from 'react';
-import noCover from './images/no-cover.jpg'
+import noCover from '../images/no-cover.jpg'
 
 const Book = ({ book, owned, onShelves, updateBook, updateSearch }) => {
 

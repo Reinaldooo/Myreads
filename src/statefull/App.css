@@ -13,7 +13,7 @@ body, .app {
 
 .list-books-title {
   padding: 80px 0;
-  background: url(./images/back.jpg);
+  background: url(../images/back.jpg);
   background-size: cover;
 	background-position: center;
   text-align: center;
@@ -70,7 +70,7 @@ border-radius: 10px;
   height: 50px;
   border-radius: 50%;
   background: #42a5f5;
-  background-image: url('./icons/add.svg');
+  background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
@@ -109,7 +109,7 @@ border-radius: 10px;
   width: 50px;
   height: 53px;
   background: white;
-  background-image: url('./icons/arrow-back.svg');
+  background-image: url('../icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
@@ -118,6 +118,10 @@ border-radius: 10px;
 
 .search-books-results {
   padding: 80px 10px 20px;
+}
+
+.no-results {
+  color: white;
 }
 
 /* books grid */
@@ -173,7 +177,7 @@ border-radius: 10px;
   height: 40px;
   border-radius: 50%;
   background: #9E9E9E;
-  background-image: url('./icons/arrow-drop-down.svg');
+  background-image: url('../icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 35px;
@@ -193,7 +197,7 @@ border-radius: 10px;
   height: 40px;
   border-radius: 50%;
   background: #43A047;
-  background-image: url('./icons/Check.png');
+  background-image: url('../icons/Check.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 25px;

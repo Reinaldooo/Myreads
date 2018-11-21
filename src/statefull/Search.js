@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import * as BooksAPI from './BooksAPI'
-import SearchShow from './SearchShow'
+import * as BooksAPI from '../BooksAPI'
+import SearchShow from '../stateless/SearchShow'
 import { Link } from 'react-router-dom'
 import './App.css'
 import _ from 'lodash'
@@ -52,14 +52,17 @@ class Search extends Component {
             </div>
         </div>
         <div className="search-books-results">
-            <SearchShow 
-            data={this.state.books}
-            updateSearch={this.updateSearch}
-            query={this.state.query}
-            owned={this.state.owned}
-            load={this.state.load}
-            display={this.state.display}
-            />
+            {
+              this.state.books.length > 0 && 
+              <SearchShow 
+              data={this.state.books}
+              updateSearch={this.updateSearch}
+              query={this.state.query}
+              owned={this.state.owned}
+              load={this.state.load}
+              display={this.state.display}
+              />
+            }
         </div>
       </div>
     )
