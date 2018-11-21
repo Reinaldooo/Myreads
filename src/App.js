@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 import { Route, Link } from 'react-router-dom'
+import sortBy from 'sort-by'
 import Show from './Show.js'
 import Search from './Search.js'
 import './App.css'
@@ -42,16 +43,16 @@ class BooksApp extends Component {
             <div className="list-books-content">
               <div>
                 <Show 
-                data={this.state.books.filter((b) => b.shelf === "currentlyReading")}
+                data={this.state.books.filter((b) => b.shelf === "currentlyReading").sort(sortBy('title', 'id'))}
                 updateBook={this.updateBook}
                 title="Currently Reading"
                 />
                 <Show 
-                data={this.state.books.filter((b) => b.shelf === "wantToRead")}
+                data={this.state.books.filter((b) => b.shelf === "wantToRead").sort(sortBy('title', 'id'))}
                 updateBook={this.updateBook}
                 title="Want to Read"/>
                 <Show 
-                data={this.state.books.filter((b) => b.shelf === "read")}
+                data={this.state.books.filter((b) => b.shelf === "read").sort(sortBy('title', 'id'))}
                 updateBook={this.updateBook}
                 title="Read"/> 
               </div>
