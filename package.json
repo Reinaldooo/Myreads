@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "lodash": "^4.17.11",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.2",
     "sort-by": "^1.2.0"
