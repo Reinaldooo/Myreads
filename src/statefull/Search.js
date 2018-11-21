@@ -4,10 +4,12 @@ import SearchShow from '../stateless/SearchShow'
 import { Link } from 'react-router-dom'
 import './App.css'
 import { DebounceInput } from 'react-debounce-input';
+import If from '../stateless/If'
 
 class Search extends Component {
   state = {
     books: [],
+    emptyResults: false,
     query: '',
     owned: this.props.data,
     load: true,
@@ -21,9 +23,15 @@ class Search extends Component {
   updateQuery = (query) => {
     let cleanQuery = query.trim()
     this.setState({ query: cleanQuery })
-    BooksAPI.search(cleanQuery, 2).then((books) => {
-      this.setState({ books: books || [], load: false })
-    })
+    if (cleanQuery.length > 0) {
+      BooksAPI.search(cleanQuery, 2).then((books) => {
+        if (books.error) {
+          this.setState({ emptyResults: true, load: false })
+        } else {
+          this.setState({ emptyResults: false, books: books || [], load: false })
+        }
+      })
+    }
   }
   updateSearch = (book, shelf) => {
     this.props.updateBook(book, shelf)
@@ -50,8 +58,15 @@ class Search extends Component {
           </div>
         </div>
         <div className="search-books-results">
+          <If test={this.state.query && this.state.load}>
+            <div className="spinner">
+              <div className="bounce1"></div>
+              <div className="bounce2"></div>
+              <div className="bounce3"></div>
+            </div>
+          </If>
           {
-            this.state.books.length > 0 &&
+            (this.state.books.length > 0 || this.state.emptyResults) &&
             <SearchShow
               data={this.state.books}
               updateSearch={this.updateSearch}
@@ -59,6 +74,7 @@ class Search extends Component {
               owned={this.state.owned}
               load={this.state.load}
               display={this.state.display}
+              emptyResults={this.state.emptyResults}
             />
           }
         </div>
