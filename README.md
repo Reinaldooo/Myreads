@@ -3,7 +3,7 @@
 ##### My Reads Project
 -----
 
-![Example GIF](/src/Example.gif)
+![Example GIF](/Example.gif)
 
 This is an ReactJS application to help you keep track of your books.
 You have three shelfs:
@@ -15,10 +15,12 @@ You have three shelfs:
 
 You can search on Google Books and add your favourite books.
 Please refer to the `SEARCH_TERMS` file for allowed terms.
-
+<dd> </dd>
+<dd> </dd>
 This project demonstrates the understanding of
 props, states, components, JSX, AJAX, and ES6/ES2015.
-
+<dd> </dd>
+<dd> </dd>
 * To load it directly in the browser, click [here](https://myreads-reinaldooo.netlify.com/).
 
 To load it in your local machine:
