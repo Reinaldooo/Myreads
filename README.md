@@ -15,20 +15,13 @@ You have three shelfs:
 
 You can search on Google Books and add your favourite books.
 Please refer to the `SEARCH_TERMS` file for allowed terms.
-<dl>
-<dd></dd>
-</dl>
-This project demonstrates the understanding of
-props, states, components, JSX, AJAX, and ES6/ES2015.
-<dl>
-<dd></dd>
-</dl>
-* To load it directly in the browser, click [here](https://myreads-reinaldooo.netlify.com/).
-<dl>
-<dd></dd>
-</dl>
-To load it in your local machine:
 
+This project demonstrates the understanding of
+`props, states, components, JSX, AJAX, and ES6/ES2015.`
+
+* To load it directly in the browser, click [here](https://myreads-reinaldooo.netlify.com/).
+
+To load it in your local machine:
 * Install node.js if you don't have it. You can download it [here](https://nodejs.org).
 * To get started, clone this repo and cd into the folder.
 * `git clone https://github.com/Reinaldooo/Myreads.git`
@@ -37,5 +30,4 @@ To load it in your local machine:
 * `npm start` to start the app. If you have Yarn installed, you can run `yarn start`
 * This will start the app in your default browser at: localhost:3000
 --
-**Reinaldo Trindade**
-*Web Developer*
+###### Reinaldo Trindade - Web Developer
